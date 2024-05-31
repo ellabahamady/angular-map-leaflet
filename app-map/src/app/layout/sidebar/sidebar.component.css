@@ -1,0 +1,30 @@
+aside {
+    width: 100px;
+    height: 100%;
+    float: left;
+    background-color: #ebab28;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none ;
+}
+
+img {
+    width: 30px;
+    margin-top: 15px;
+}
+
+.nav-pills .nav-link {
+    border-bottom: solid 0.5px #ebab28;
+    border-radius: 0 !important;
+    color: #000000;
+    font-weight: 600;
+    text-align: center;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #ffffff;
+    background-color: #392056;
+}

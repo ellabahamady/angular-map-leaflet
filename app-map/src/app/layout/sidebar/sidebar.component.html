@@ -1,0 +1,16 @@
+<aside>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+        <li ngbNavItem="home">
+            <a ngbNavLink routerLink="/home">
+                <img src="assets/img/house-solid.svg" >
+                <p>Home</p>
+            </a>
+        </li>
+        <li ngbNavItem="about">
+            <a ngbNavLink routerLink="/about">
+                <img src="assets/img/circle-info-solid.svg" >
+                <p>About</p>
+            </a>
+        </li>
+    </ul>
+</aside>
