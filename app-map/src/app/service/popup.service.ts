@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,17 @@ export class PopupService {
   constructor() { }
 
   showPopup(data: any): string {
-    return `` +
-      `<div>Name: ${ data.persons[0].first_name + ' ' + data.persons[0].last_name }</div>` +
-      `<div>Age: ${ data.persons[0].age }</div>` +
-      `<div>Date of Birth: ${ data.persons[0].date_of_birth }</div>` +
-      `<div>Date of Death: ${ data.persons[0].date_of_death }</div>`
+    console.log(data)
+    let info = '';
+    info += `<div>Cemetery Name: ${ data.cemetery_name }</div>`;
+    info += `<div>Status: ${ data.status }</div>`;
+    for(let person of data.persons){
+      info += `<br><div>Name: ${ person.first_name + ' ' + person.last_name }</div>`;
+      info += `<div>Age: ${ person.age }</div>`;
+      info += `<div>Date of Birth: ${ person.date_of_birth ? (moment(person.date_of_birth)).format('DD MMMM YYYY') : '-' }</div>`;
+      info += `<div>Date of Death: ${ person.date_of_death ? (moment(person.date_of_death)).format('DD MMMM YYYY') : '-' }</div>`;
+    }
+
+    return info
   }
 }

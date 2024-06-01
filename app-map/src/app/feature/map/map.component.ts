@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { PlotService } from 'src/app/service/plot.service';
+import { PopupService } from 'src/app/service/popup.service';
 
 @Component({
   selector: 'app-map',
@@ -11,7 +12,10 @@ export class MapComponent implements AfterViewInit {
   private map!: L.Map;
   private plots: any;
   
-  constructor( private plotService: PlotService ) { }
+  constructor( 
+    private plotService: PlotService, 
+    private popupService: PopupService 
+  ) { }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -65,6 +69,8 @@ export class MapComponent implements AfterViewInit {
       fillOpacity: 1.0,
       fillColor: '#6DB65B'
     });
+
+    layer.bindPopup(this.popupService.showPopup(layer.feature.properties)).openPopup();
   }
   
   private resetFeature(e: { target: any; }) {
@@ -77,5 +83,7 @@ export class MapComponent implements AfterViewInit {
       fillOpacity: 0.5,
       fillColor: '#5886fa'
     });
+
+    layer.bindPopup().closePopup();
   }
 }
