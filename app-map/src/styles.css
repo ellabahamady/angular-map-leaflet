@@ -10,3 +10,9 @@ html, body {
 section {
     margin: 30px 130px;
 }
+
+@media (max-width: 768px) {
+    section {
+        margin: 30px 50px;
+    }
+}
