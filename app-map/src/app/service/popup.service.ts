@@ -9,10 +9,11 @@ export class PopupService {
   constructor() { }
 
   showPopup(data: any): string {
-    console.log(data)
     let info = '';
     info += `<div>Cemetery Name: ${ data.cemetery_name }</div>`;
     info += `<div>Status: ${ data.status }</div>`;
+
+    // show data person if Persons is not empty
     for(let person of data.persons){
       info += `<br><div>Name: ${ person.first_name + ' ' + person.last_name }</div>`;
       info += `<div>Age: ${ person.age }</div>`;

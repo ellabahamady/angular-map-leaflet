@@ -11,10 +11,10 @@ import { PopupService } from 'src/app/service/popup.service';
 export class MapComponent implements AfterViewInit {
   private map!: L.Map;
   private plots: any;
-  
-  constructor( 
-    private plotService: PlotService, 
-    private popupService: PopupService 
+
+  constructor(
+    private plotService: PlotService,
+    private popupService: PopupService
   ) { }
 
   ngAfterViewInit(): void {
@@ -23,8 +23,9 @@ export class MapComponent implements AfterViewInit {
       this.plots = plots;
       this.initPlotsLayer();
     })
-   }
+  }
 
+  // show map
   private initMap(): void {
     this.map = L.map('map', {
       center: [ -8.635945622432802, 115.19192682579163 ],
@@ -39,6 +40,7 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
+  // show plot on map
   private initPlotsLayer() {
     const plotLayer = L.geoJSON(this.plots, {
       style: (feature) => ({
@@ -59,9 +61,10 @@ export class MapComponent implements AfterViewInit {
     this.map.addLayer(plotLayer);
   }
 
+  // Hover on
   private highlightFeature(e: { target: any; }) {
     const layer = e.target;
-  
+
     layer.setStyle({
       weight: 5,
       opacity: 1.0,
@@ -70,12 +73,14 @@ export class MapComponent implements AfterViewInit {
       fillColor: '#6DB65B'
     });
 
+    // show popup
     layer.bindPopup(this.popupService.showPopup(layer.feature.properties)).openPopup();
   }
-  
+
+  // Hover off
   private resetFeature(e: { target: any; }) {
     const layer = e.target;
-  
+
     layer.setStyle({
       weight: 2,
       opacity: 0.5,
@@ -84,6 +89,7 @@ export class MapComponent implements AfterViewInit {
       fillColor: '#5886fa'
     });
 
+    // close popup
     layer.bindPopup().closePopup();
   }
 }

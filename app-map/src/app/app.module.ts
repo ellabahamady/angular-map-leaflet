@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+
 import { PlotService } from './service/plot.service';
 import { PopupService } from './service/popup.service';
-
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { HomeComponent } from './feature/home/home.component';
 import { AboutComponent } from './feature/about/about.component';
